@@ -64,4 +64,5 @@ env
 venv
 build_and_deploy_to_s3.sh
 zappa_settings.json
+Pipfile.lock
 
