@@ -3,7 +3,15 @@ from .base import *
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
-ALLOWED_HOSTS = [os.getenv('BACKEND_HOSTNAME')]
+
+# Warning: you need to set the hostname of the backend app
+# or it will allow every hostname
+if 'BACKEND_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS = [os.getenv('BACKEND_HOSTNAME')]
+elif 'API_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS = [os.getenv('API_HOSTNAME')]
+else:
+    ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
